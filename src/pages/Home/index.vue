@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <layout />
-    1234556
   </div>
 </template>
 

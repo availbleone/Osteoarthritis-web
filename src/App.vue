@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    护士工作站信息系统
-    <router-view></router-view>
+    <div>骨关节炎健康管理系统</div>
+    
+    <router-view>
+    </router-view>
   </div>
 </template>

@@ -17,7 +17,7 @@ const routes = [
     redirect: '/login', // 添加重定向规则，将根路径重定向到 /login
   },
   {
-    path: "/home",
+    path: "/Home",
     component: () => import(/*webpackChunkName:'home'*/ "@/pages/Home"),
     children: [
       {

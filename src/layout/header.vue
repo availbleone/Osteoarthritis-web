@@ -37,40 +37,54 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 let userinfo = JSON.parse(localStorage.getItem("userinfo"));
-// console.log(userinfo);
+console.log("header");
+console.log(userinfo);
 let user = userinfo.Response.Data.User;
-// console.log(user);
+console.log(user);
+console.log("ggg");
 export default {
   data() {
     return {
-      userinfo: userinfo,
-      user: user,
+      userinfo: null,
+      user: null,
     };
   },
   computed: {
     ...mapState(["collapse"]),
     collapseIcon() {
-      return this.collapse
-        ? "iconfont icon-fold-right"
-        : "iconfont icon-shouqi1";
+      return this.collapse ? "iconfont icon-fold-right" : "iconfont icon-shouqi1";
     },
     avatarUrl() {
-      //如果用户没有头像,就使用默认头像,如果有,就使用用户头像;
-      return userinfo.headimgurl
-        ? userinfo.headimgurl
+      // 如果用户没有头像,就使用默认头像,如果有,就使用用户头像;
+      return this.user && this.user.headimgurl
+        ? this.user.headimgurl
         : "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png";
     },
   },
+  created() {
+    this.loadUserInfo();
+  },
   methods: {
     ...mapMutations(["SET_COLLAPSE"]),
+    loadUserInfo() {
+      const userinfoStr = localStorage.getItem("userinfo");
+      if (userinfoStr) {
+        try {
+          this.userinfo = JSON.parse(userinfoStr);
+          this.user = this.userinfo.Response.Data.User;
+        } catch (error) {
+          console.error("Failed to parse userinfo:", error);
+        }
+      }
+    },
     quit() {
       this.$confirm("确定要退出登录的账号吗", "提示")
         .then(() => {
-          //清除token
+          // 清除token
           localStorage.removeItem("userinfo");
-          //返回到登入页
+          // 返回到登入页
           this.$router.push("/login");
-          //清掉本地缓存
+          // 清掉本地缓存
           location.reload();
 
           this.$message.success("退出成功");
@@ -81,16 +95,9 @@ export default {
         });
     },
 
-    //command (命令) 右上角下拉菜单触发事件
+    // command (命令) 右上角下拉菜单触发事件
     command(routeName) {
       console.log(routeName);
-      // console.log(allRoutes);
-      //   //routeName就是下拉菜单传入的路由名字
-      // if (allRoutes[0].children) {
-
-      //   this.$router.push({name: `home-${routeName}`})
-      // this.$router.push(`${routeName}`)
-      // }
       if (routeName === "quit") {
         console.log(111);
         this.quit();
@@ -165,3 +172,6 @@ export default {
   width: 200px;
 }
 </style>
+
+
+

@@ -54,21 +54,18 @@
             <el-input v-model.number="ruleForm.captcha"></el-input>
             </el-form-item> -->
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')"
-            >提交</el-button
-          >
+          <el-button type="primary" @click="directSubmit">提交</el-button>
           <el-button @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
   </div>
 </template>
+
 <script>
 import * as api from "@/api/users.js";
-//  import xml2json from '@/xml2json.js'
-
-//声明3个常规校验函数
-//校验验证码
+// 声明3个常规校验函数
+// 校验验证码
 var validateCaptcha = (rule, value, callback) => {
   if (value.length !== 5) {
     // callback('验证码必须是五位')
@@ -76,21 +73,19 @@ var validateCaptcha = (rule, value, callback) => {
     callback();
   }
 };
-//校验用户名
+
+// 校验用户名
 var validateUsername = (rule, value, callback) => {
-  // console.log(rule);
-  // console.log(value);
-  //用户名正则，3到16位（字母，数字，下划线，减号）
+  // 用户名正则，3到16位（字母，数字，下划线，减号）
   var uPattern = /^[a-zA-Z0-9_-]{3,16}$/;
-  //如果校验通过，需要直接回调callback()
-  //如果校验 不通过，callback()中传参数
   if (uPattern.test(value)) {
     callback();
   } else {
     callback("3到16位(字母，数字，下划线，减号)");
   }
 };
-//校验密码
+
+// 校验密码
 var validatePassword = (rule, value, callback) => {
   var reg = /^[a-zA-Z0-9_-]{3,16}$/;
   if (!reg.test(value)) {
@@ -116,82 +111,45 @@ export default {
         // ]
       },
     };
+    
   },
+  
   methods: {
-    submitForm(formName) {
-      // 跳过登录验证，直接模拟登录成功并跳转到主页
+    directSubmit() {
+      // 模拟登录成功
       let aim = {
         Response: {
-          Desc: "登录成功"
-        }
+          Desc: "登录成功",
+          Data: {
+            User: {
+              UserName: this.ruleForm.username,
+              UserPassword: this.ruleForm.password,
+              Area: {
+                AreaName: "Example Area",
+              },
+            },
+          },
+        },
       };
+
       // 存储用户信息到本地
       localStorage.setItem("userinfo", JSON.stringify(aim));
+
       // 跳转到主页
-      this.$router
-          .push("/ReleaseManagement/Scheduling")
-          .catch((err) => {
-            return err;
-          });
+      this.$router.push("/Home").catch((err) => {
+        console.error("Navigation failed:", err);
+      });
     },
+    
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
   },
-  /*methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-            // alert('submit!');
-          //   console.log(this.ruleForm);
-          let { username, password } = this.ruleForm;
-          let res = api.loginApi(username, password).then(async (res) => {
-            // console.log(res.data);
-            // var reg=/成功/i;
-            // var res=reg.test(res.data);
-            // console.log(res);//true
-            // xml转json
-            let aim = this.$x2js.xml2js(res.data);
-            console.log(aim.Response);
-            let res2 = aim.Response.Desc;
-            // console.log(res2);
-            var reg = /成功/i;
-            var res = reg.test(res2);
-            // console.log(res);//true
-            if (res) {
-              //存储用户信息到本地
-              localStorage.setItem("userinfo", JSON.stringify(aim));
-              //跳转到主页
-              this.$router
-                .push("/ReleaseManagement/Scheduling")
-                .catch((err) => {
-                  // alert("Error: " + err)
-                  return err;
-                });
-            } else {
-              // alert('密码错误')
-            }
-          });
-          // console.log(res);
-          // console.log(res.data);
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    },
-  },*/
 };
 </script>
-<style lang="less" scoped>
-/* //修改element-ui的样式
-    //1.打开调试器，找准类名，覆盖样式
-    //2.看权重，使用!important
-    //3.使用深度选择器 >>> /deep/ v::deep */
 
+<style lang="less" scoped>
+/* 修改element-ui的样式 */
 .login-container {
   text-align: center;
   overflow: hidden;
@@ -214,8 +172,6 @@ export default {
 }
 .testbox {
   position: relative;
-  // right: 45%;
-  // top: 25%;
   margin: 172px auto;
   border-radius: 5px;
   width: 400px;
@@ -239,11 +195,6 @@ export default {
     color: rgb(112, 107, 107);
   }
 }
-//   .el-form-item {
-//     /deep/  .el-form-item__label {
-//         color:rgb(112, 107, 107)
-//   }
-//  }
 .iconfont {
   position: absolute;
   font-size: 30px;
@@ -258,7 +209,6 @@ export default {
   left: 18px;
 }
 
-// 二维码
 .qrCode {
   width: 400px;
   position: absolute;
@@ -273,7 +223,6 @@ export default {
   margin-right: 3px;
 }
 
-//二维码样式
 .erweima .img {
   display: inline-block;
   position: relative;
@@ -286,3 +235,6 @@ export default {
   }
 }
 </style>
+
+
+

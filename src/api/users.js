@@ -3,7 +3,7 @@ import http from "../utils/requset";
 import { Base64 } from "js-base64"; // 引入
 
 //一个场景
-//开发的时候 请求的服务器地址是 http://192.168.2.52:8081/
+//开发的时候 请求的服务器地址是 http://192.168.136.217:80/
 
 //测试的时候 请求的地址是 http://192.168.136.217:80/
 
@@ -11,7 +11,6 @@ import { Base64 } from "js-base64"; // 引入
 
 console.log(process.env);
 console.log(process.env.NODE_ENV);
-
 console.log(process.env['VUE_APP_BASE_URL'])
 console.log(window.domain);
 // process.env['VUE_APP_BASE_URL'] = window.domain

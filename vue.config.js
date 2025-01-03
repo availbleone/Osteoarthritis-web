@@ -17,5 +17,19 @@ module.exports = defineConfig({
   publicPath:"./",//配置静态资源为当前目录
   transpileDependencies: true,
   lintOnSave: false,
-
+  outputDir: "dist",
+  assetsDir:"static",
+  indexPath: 'index.html',
+  productionSourceMap: false,
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:10001/test/login',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
 });
