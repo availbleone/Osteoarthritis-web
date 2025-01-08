@@ -26,21 +26,21 @@ const routes = [
           import(/*webpackChunkName:'welcome'*/ "@/pages/Home/Welcome"),
       },
       {
-        path: "releaseManagement",
+        path: "PatientsDocument",
         component: () =>
           import(
-            /*webpackChunkName:'releaseManagement'*/ "@/pages/Home/ReleaseManagement"
+            /*webpackChunkName:'PatientsDocument'*/ "@/pages/Home/PatientsDocument"
           ),
         meta: {
-          title: "fbgl",
-          name: "项目发布管理",
+          title: "dangan",
+          name: "患者个人健康档案",
         },
         children: [
           {
             path: "scheduling",
             component: () =>
               import(
-                /*webpackChunkName:'scheduling'*/ "@/pages/Home/ReleaseManagement/Scheduling"
+                /*webpackChunkName:'scheduling'*/ "@/pages/Home/PatientsDocument/Scheduling"
               ),
             meta: {
               title: "xmpb",
@@ -51,7 +51,7 @@ const routes = [
             path: "projectEditor",
             component: () =>
               import(
-                /*webpackChunkName:'projectEditor'*/ "@/pages/Home/ReleaseManagement/ProjectEditor"
+                /*webpackChunkName:'projectEditor'*/ "@/pages/Home/PatientsDocument/ProjectEditor"
               ),
             meta: {
               title: "xmbj",
@@ -62,7 +62,7 @@ const routes = [
             path: "messageEditor",
             component: () =>
               import(
-                /*webpackChunkName:'messageEditor'*/ "@/pages/Home/ReleaseManagement/MessageEditor"
+                /*webpackChunkName:'messageEditor'*/ "@/pages/Home/PatientsDocument/MessageEditor"
               ),
             meta: {
               title: "lybj",
@@ -73,7 +73,7 @@ const routes = [
             path: "watchEditor",
             component: () =>
               import(
-                /*webpackChunkName:'watchEditor'*/ "@/pages/Home/ReleaseManagement/WatchEditor"
+                /*webpackChunkName:'watchEditor'*/ "@/pages/Home/PatientsDocument/WatchEditor"
               ),
             meta: {
               title: "zbbj",
@@ -116,6 +116,39 @@ const routes = [
             },
           },
         ],
+      },
+      {
+        path:"remoteDiagnose",
+        component: () =>
+          import(
+            /*webpackChunkName:'remoteDiagnose'*/ "@/pages/Home/RemoteDiagnose"
+          ),
+        meta: {
+          title: "yclf",
+          name: "远程诊疗",
+        },
+      },
+      {
+        path:"followUp",
+        component: () =>
+          import(
+            /*webpackChunkName:'followUp'*/ "@/pages/Home/FollowUp"
+          ),
+        meta: {
+          title: "sfgl",
+          name: "随访管理",
+        },
+      },
+      {
+        path:"imagemManagement",
+        component: () =>
+          import(
+            /*webpackChunkName:'imagemManagement'*/ "@/pages/Home/ImagemManagement"
+          ),
+        meta: {
+          title: "yxypgl",
+          name: "影像阅片管理",
+        },
       },
     ],
   },

@@ -1,6 +1,6 @@
 <template>
   <el-breadcrumb separator="/" v-if="flag">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+    <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
     <!-- <el-breadcrumb-item><a href="/">信息发布管理</a></el-breadcrumb-item>
         <el-breadcrumb-item>护理项目排班</el-breadcrumb-item>
         <el-breadcrumb-item>护理项目编辑</el-breadcrumb-item> -->
@@ -32,7 +32,7 @@ export default {
   //     immediate:true, // 首次加载的时候执行函数
   //     $route(newVal){
   //         console.log('==============',newVal)
-  //         if(newVal.path=="/ReleaseManagement/Scheduling" || newVal.path=="/SystemSettings/ProjectMaintenance"){
+  //         if(newVal.path=="/PatientsDocument/Scheduling" || newVal.path=="/SystemSettings/ProjectMaintenance"){
   //             this.flag = false
   //         }else{
   //             this.flag =  true
@@ -49,7 +49,7 @@ export default {
       handler(newVal) {
         console.log("==============", newVal, this.flag);
         if (
-          newVal.path == "/ReleaseManagement/Scheduling" ||
+          newVal.path == "/PatientsDocument/Scheduling" ||
           newVal.path == "/SystemSettings/ProjectMaintenance"
         ) {
           this.flag = false;

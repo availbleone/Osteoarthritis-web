@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <!-- <h1>项目发布管理</h1> -->
+  <div>>
     <router-view></router-view>
   </div>
 </template>

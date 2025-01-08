@@ -387,7 +387,7 @@ export default {
     lookOver(row) {
       //设置当前行的信息
       this.$router.push({
-        path: "/releaseManagement/projectEditor",
+        path: "/PatientsDocument/projectEditor",
         query: row,
       });
     },

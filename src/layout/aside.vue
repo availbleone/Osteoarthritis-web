@@ -11,19 +11,19 @@
       text-color="##3d72c1"
       active-text-color="#E47833"
     >
-      <el-submenu index="ReleaseManagement">
+      <el-submenu index="PatientsDocument">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span>信息发布管理</span>
+          <span>患者个人健康档案</span>
         </template>
         <el-menu-item-group>
           <template slot="title"></template>
-          <el-menu-item index="/ReleaseManagement/Scheduling"
+          <el-menu-item index="/PatientsDocument/Scheduling"
             >护理项目排班</el-menu-item
           >
-          <!-- <el-menu-item index="/ReleaseManagement/ProjectEditor">护理项目编辑</el-menu-item> -->
-          <!-- <el-menu-item index="/ReleaseManagement/MessageEditor">留言编辑</el-menu-item> -->
-          <el-menu-item index="/ReleaseManagement/WatchEditor"
+          <!-- <el-menu-item index="/PatientsDocument/ProjectEditor">护理项目编辑</el-menu-item> -->
+          <!-- <el-menu-item index="/PatientsDocument/MessageEditor">留言编辑</el-menu-item> -->
+          <el-menu-item index="/PatientsDocument/WatchEditor"
             >值班编辑</el-menu-item
           >
         </el-menu-item-group>
@@ -46,9 +46,48 @@
           <el-menu-item index="/SystemSettings/ProjectMaintenance"
             >项目维护</el-menu-item
           >
-          <!-- <el-menu-item index="/SystemSettings/BPMaintain">呼机维护</el-menu-item> -->
         </el-menu-item-group>
       </el-submenu>
+
+      <el-submenu index="/remoteDiagnose">
+        <template slot="title">
+          <i class="el-icon-location el-icon-setting"></i>
+          <span>远程诊疗</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title"></template>
+          <el-menu-item index="/remoteDiagnose"
+            >项目维护</el-menu-item
+          >
+        </el-menu-item-group>
+      </el-submenu>
+      
+      <el-submenu index="/followUp">
+        <template slot="title">
+          <i class="el-icon-location el-icon-setting"></i>
+          <span>随访管理</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title"></template>
+          <el-menu-item index="/followUp"
+            >项目维护</el-menu-item
+          >
+        </el-menu-item-group>
+      </el-submenu>
+
+      <el-submenu index="/imagemManagement">
+        <template slot="title">
+          <i class="el-icon-location el-icon-setting"></i>
+          <span>影像阅片管理</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title"></template>
+          <el-menu-item index="/imagemManagement"
+            >项目维护</el-menu-item
+          >
+        </el-menu-item-group>
+      </el-submenu>
+      
     </el-menu>
   </el-aside>
 </template>

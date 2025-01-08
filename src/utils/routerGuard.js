@@ -12,7 +12,7 @@ import "nprogress/nprogress.css";
 router.beforeEach((to, from, next) => {
   // console.log("to,from,next",to,from,next);
   // console.log("to.fullPath",to.fullPath);
-  // if (to.fullPath == "/ReleaseManagement/Scheduling") {
+  // if (to.fullPath == "/PatientsDocument/Scheduling") {
   //       console.log("to.fullPath",111);
   // }
 

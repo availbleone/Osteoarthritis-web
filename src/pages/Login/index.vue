@@ -24,7 +24,12 @@
                             <b>请使用手机微信扫码登入</b>
                         </p> -->
       </div>
+      <div class="role-buttons">
+        <el-button type="primary" @click="switchAccountType('doctor')" :class="{ active: accountType === 'doctor' }">医生</el-button>
+        <el-button type="primary" @click="switchAccountType('admin')" :class="{ active: accountType === 'admin' }">管理员</el-button>
+      </div>
       <h1 class="title">骨关节炎健康管理系统</h1>
+      
       <el-form
         :model="ruleForm"
         status-icon
@@ -33,6 +38,7 @@
         label-width="100px"
         class="demo-ruleForm"
       >
+      <div></div>
         <i class="iconfont icon-icon-test"></i>
         <el-form-item label="账户" prop="username">
           <el-input
@@ -98,6 +104,7 @@ var validatePassword = (rule, value, callback) => {
 export default {
   data() {
     return {
+      accountType: 'doctor',
       ruleForm: {
         username: "",
         password: "",
@@ -115,6 +122,17 @@ export default {
   },
   
   methods: {
+    switchAccountType(type) {
+      this.accountType = type;
+      // 你可以在这里根据账户类型调整表单的验证规则或其他逻辑
+      if (type === 'doctor') {
+        console.log("doctor")
+        // 设置医生账号的特定规则或提示信息
+      } else if (type === 'admin') {
+        console.log("admin")
+        // 设置管理员账号的特定规则或提示信息
+      }
+    },
     directSubmit() {
       // 模拟登录成功
       let aim = {
@@ -174,9 +192,9 @@ export default {
   position: relative;
   margin: 172px auto;
   border-radius: 5px;
-  width: 400px;
+  width: 500px;
   background-color: rgba(161, 162, 163, 0.3);
-  padding: 50px 40px 50px 0;
+  padding: 0 0px 50px 0;
   box-sizing: border-box;
 
   .cornerMark {
@@ -191,7 +209,7 @@ export default {
 
   .title {
     text-align: center;
-    margin: 0 -68px 50px 0;
+    margin: 0 -25px 50px 0;
     color: rgb(112, 107, 107);
   }
 }
@@ -199,10 +217,10 @@ export default {
   position: absolute;
   font-size: 30px;
   left: 20px;
-  top: 145px;
+  
 }
 .icon-kaoqin3 {
-  top: 208px;
+  
 }
 .icon-shouji-iphone12-zhengmian {
   top: 268px;
@@ -233,6 +251,24 @@ export default {
     position: absolute;
     left: 0;
   }
+}
+.active {
+  font-weight: bold;
+  color: rgb(11, 9, 9);
+}
+
+/* 角色切换按钮的样式 */
+.role-buttons {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  
+}
+.role-buttons .el-button {
+  background:linear-gradient(rgba(125, 167, 231,0.5),rgba(134, 234, 243,0.5),rgba(184, 219, 227,0.5));
+  width: 48%; /* 每个按钮占一半减去间距 */
+  border-color: rgba(125, 167, 231,0.5);
 }
 </style>
 

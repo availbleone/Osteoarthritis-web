@@ -86,7 +86,6 @@ export default {
           this.$router.push("/login");
           // 清掉本地缓存
           location.reload();
-
           this.$message.success("退出成功");
         })
         .catch((e) => {
@@ -162,7 +161,7 @@ export default {
   background-image: linear-gradient(
     135deg,
     rgb(76, 138, 235),
-    rgb(68, 126, 217)
+    rgb(6, 7, 8)
   );
   color: #fff;
   text-align: center;
